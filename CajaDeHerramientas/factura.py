@@ -3,8 +3,8 @@ Created on 28 sep. 2019
 
 @author: Crucio
 '''
-from PartesDeLaFactura import * 
-from CajaDeHerramientas.PartesDeLaFactura.persona import persona
+
+from CajaDeHerramientas.PartesDeLaFactura import persona
 
 class Factura:
     

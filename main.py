@@ -8,11 +8,14 @@ Created on 28 sep. 2019
 
 from  xml.dom import minidom
 from os import scandir, getcwd, listdir, walk
-from CajaDeHerramientas import bibliotecarioDeArchivos
+from CajaDeHerramientas import bibliotecarioDeArchivos, factura
+
 
 #Variables de inicio================================================================
 
 urlDelArchivoDeConfiguraciones = "configuraciones/manejoDeArchivos.xml"
+
+Facturas = []
 
 #===================================================================================
 
@@ -30,6 +33,11 @@ _UrlInputDeArchivos =  _ArchivoConfig.getElementsByTagName("urlCarpetaDeEntrada"
 #directorios, subdirectorios, archivos
 Facturas = bibliotecarioDeArchivos.buscarFacturasEnLasCarpetas(_UrlInputDeArchivos)
 
-print("MMM")
-print("MMM")
+for urlFactura in Facturas:
+    
+    1=1
+    
 
+    
+print("MMM")
+print("MMM")

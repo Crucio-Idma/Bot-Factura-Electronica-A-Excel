@@ -27,12 +27,16 @@ def buscarFacturasEnLasCarpetas(_UrlInputDeArchivos, archivosResultado = []):
         archivosR[i] = directorio + archivo
         i+=1
         
-    
-    archivosResultado += archivosR
+    if len ( archivosR ) > 0:
+        
+        archivosResultado += archivosR
+        
+    i=0
     for subdirectorio in subdirectorios:
         
-        subdirectorio =  directorio + subdirectorio
+        subdirectorio =  directorio + subdirectorio + "/"
         archivosResultado += buscarFacturasEnLasCarpetas(subdirectorio)
+
         
     return archivosResultado
 
@@ -55,6 +59,7 @@ def comprobarSiEsFactura(pListaDeArchivos):
         tst = mascaraExtensionXml.search(archivo)
         if mascaraExtensionXml.search(archivo) != None:
             Resultado.append(archivo)
+            print("#Mensaje# Se ha encontrado una factura: " + archivo)
         
     return Resultado
 
