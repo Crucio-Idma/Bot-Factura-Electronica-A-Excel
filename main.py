@@ -32,5 +32,4 @@ Facturas = bibliotecarioDeArchivos.buscarFacturasEnLasCarpetas(_UrlInputDeArchiv
 
 print("MMM")
 print("MMM")
-print("MMM")
 
