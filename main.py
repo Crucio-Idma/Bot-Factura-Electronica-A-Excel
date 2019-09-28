@@ -8,14 +8,15 @@ Created on 28 sep. 2019
 
 from  xml.dom import minidom
 from os import scandir, getcwd, listdir, walk
-from CajaDeHerramientas import bibliotecarioDeArchivos, factura
+from CajaDeHerramientas import bibliotecarioDeArchivos, factura, parserFacturas
 
 
 #Variables de inicio================================================================
 
 urlDelArchivoDeConfiguraciones = "configuraciones/manejoDeArchivos.xml"
 
-Facturas = []
+FacturasURLS = []
+FacturasObjetos = []
 
 #===================================================================================
 
@@ -31,11 +32,15 @@ except Exception as error:
 
 _UrlInputDeArchivos =  _ArchivoConfig.getElementsByTagName("urlCarpetaDeEntrada")[0].firstChild.data
 #directorios, subdirectorios, archivos
-Facturas = bibliotecarioDeArchivos.buscarFacturasEnLasCarpetas(_UrlInputDeArchivos)
+FacturasURLS = bibliotecarioDeArchivos.buscarFacturasEnLasCarpetas(_UrlInputDeArchivos)
 
-for urlFactura in Facturas:
+for urlFactura in FacturasURLS:
     
-    1=1
+    temporalObjetoFactura = parserFacturas.cargarFacturaDesdeArchivo(urlFactura)
+    
+    if temporalObjetoFactura != None:
+        
+        FacturasObjetos.append(temporalObjetoFactura)
     
 
     
