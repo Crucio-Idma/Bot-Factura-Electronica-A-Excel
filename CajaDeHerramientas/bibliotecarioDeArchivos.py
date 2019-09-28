@@ -16,11 +16,25 @@ Created on 28 sep. 2019
 from os import walk
 import re
 
-def buscarFacturasEnLasCarpetas(_UrlInputDeArchivos, archivos = []):
+def buscarFacturasEnLasCarpetas(_UrlInputDeArchivos, archivosResultado = []):
     
     directorio, subdirectorios, archivos = next(walk(_UrlInputDeArchivos))
-    archivos = comprobarSiEsFactura(archivos)
-    return archivos
+    archivosR = comprobarSiEsFactura(archivos)
+    
+    i=0
+    for archivo in archivosR:
+        
+        archivosR[i] = directorio + archivo
+        i+=1
+        
+    
+    archivosResultado += archivosR
+    for subdirectorio in subdirectorios:
+        
+        subdirectorio =  directorio + subdirectorio
+        archivosResultado += buscarFacturasEnLasCarpetas(subdirectorio)
+        
+    return archivosResultado
 
 
 """
