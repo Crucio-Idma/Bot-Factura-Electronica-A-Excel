@@ -4,4 +4,5 @@
 	<urlCarpetaDeEntrada>C:\Users\pc\Documents\Repositorios\Pruebas\BotFacturaElectronica/input/</urlCarpetaDeEntrada>
 	
 	<urlCarpetaDeSalida>C:\Users\pc\Documents\Repositorios\Pruebas\BotFacturaElectronica/output/</urlCarpetaDeSalida>
+	<urlPlantillaExcel>Plantillas/PlantillaExcelFacturas.xlsm</urlPlantillaExcel>
 </configuracionesArchivos>
