@@ -8,7 +8,7 @@ Created on 28 sep. 2019
 
 from  xml.dom import minidom
 from os import scandir, getcwd, listdir, walk
-from CajaDeHerramientas import bibliotecarioDeArchivos, factura, parserFacturas
+from CajaDeHerramientas import bibliotecarioDeArchivos, factura, parserFacturas, ArchivadorDisco
 
 
 #Variables de inicio================================================================
@@ -31,10 +31,25 @@ except Exception as error:
 
 
 _UrlInputDeArchivos =  _ArchivoConfig.getElementsByTagName("urlCarpetaDeEntrada")[0].firstChild.data
+_UrlOutputDeArchivos =  _ArchivoConfig.getElementsByTagName("urlCarpetaDeSalida")[0].firstChild.data
+_UrlInputDePlantillaExcel =  _ArchivoConfig.getElementsByTagName("urlPlantillaExcel")[0].firstChild.data
+
 #directorios, subdirectorios, archivos
 FacturasURLS = bibliotecarioDeArchivos.buscarFacturasEnLasCarpetas(_UrlInputDeArchivos)
+_UrlOutputDeArchivos = ArchivadorDisco.crearCarpetas(_UrlOutputDeArchivos)
+ArchivadorDisco.crearCarpetas(_UrlOutputDeArchivos + "/LibrosDeExcel")
+ArchivadorDisco.crearArchivoEnBaseAUnaPlantilla(_UrlInputDePlantillaExcel, _UrlOutputDeArchivos + "/LibrosDeExcel")
+
+#====================================================================================================================================================================================
+
+
+ArchivoDeExcelPlantilla = bibliotecarioDeArchivos.EncontrarArchivoDeExcelConMacros(_UrlOutputDeArchivos + "/LibrosDeExcel")
+
+
+
 i = 0
 largo = str(len(FacturasURLS))
+
 
 for urlFactura in FacturasURLS:
     
@@ -45,7 +60,10 @@ for urlFactura in FacturasURLS:
         FacturasObjetos.append(temporalObjetoFactura)
         
     print("#FacturasAMemoria#" + str(i) +"de " + largo)
-    i+=1
     
+    i+=1
+
+
+
 print("MMM")
 print("MMM")

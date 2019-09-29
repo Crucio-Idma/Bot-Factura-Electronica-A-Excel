@@ -74,4 +74,17 @@ def esUrlAbsoluta(pUrl):
         
     return True
     
+def EncontrarArchivoDeExcelConMacros(pUrl):
     
+    directorio, subdirectorios, archivos = next(walk(pUrl))
+    mascaraExtensionXml = re.compile(r'\.xlsm$')
+    
+    
+    for archivo in archivos:
+        tst = mascaraExtensionXml.search(archivo)
+        if mascaraExtensionXml.search(archivo) != None:
+            resultado = directorio +  archivo
+            return resultado
+
+
+    return None
