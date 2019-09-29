@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuracionesArchivos>
+	<urlCarpetaDeEntrada>C:\Users\pc\Documents\Repositorios\Pruebas\BotFacturaElectronica/input/</urlCarpetaDeEntrada>
+	
+	<urlCarpetaDeSalida>C:\Users\pc\Documents\Repositorios\Pruebas\BotFacturaElectronica/output/</urlCarpetaDeSalida>
+	<urlPlantillaExcel>Plantillas/PlantillaExcelFacturas.xlsm</urlPlantillaExcel>
+</configuracionesArchivos>
