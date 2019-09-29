@@ -83,7 +83,7 @@ def EncontrarArchivoDeExcelConMacros(pUrl):
     for archivo in archivos:
         tst = mascaraExtensionXml.search(archivo)
         if mascaraExtensionXml.search(archivo) != None:
-            resultado = directorio +  archivo
+            resultado = directorio + "\\" + archivo
             return resultado
 
 
