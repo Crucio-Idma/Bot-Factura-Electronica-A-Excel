@@ -75,6 +75,8 @@ for urlFactura in FacturasURLS:
 ArchivoDeExcelATrabajar = bibliotecarioDeArchivos.EncontrarArchivoDeExcelConMacros(_UrlOutputDeArchivos + "/LibrosDeExcel")
 ArchivoDeExcelATrabajar = ArchivoDeExcelATrabajar.replace("/", "\\")
 
+i = 0
+cantidadDeFacturas = len(FacturasObjetos)
 if os.path.exists(ArchivoDeExcelATrabajar):
     
     ProgramaExcel = clienteW2.Dispatch("Excel.Application")
@@ -83,29 +85,30 @@ if os.path.exists(ArchivoDeExcelATrabajar):
     LibroDeTrabajoM = ProgramaExcel.ActiveWorkbook
     HojaDeTrabajo = LibroDeTrabajoM.Sheets(1)
     
-    HojaDeTrabajo.Cells(100, 2).Value = FacturasObjetos[0].obtenerNombreEmisor()
-    IdEmisor = FacturasObjetos[0].obtenerTipoIDEmisor() + "#" + FacturasObjetos[0].obtenerIDEmisor()
-    HojaDeTrabajo.Cells(101, 2).Value = IdEmisor 
+    for Factura in FacturasObjetos:
     
-    HojaDeTrabajo.Cells(102, 2).Value = FacturasObjetos[0].obtenerNombreReceptor()
-    IdReceptor = FacturasObjetos[0].obtenerTipoIDReceptor() + "#" + FacturasObjetos[0].obtenerIDReceptor()
-    HojaDeTrabajo.Cells(103, 2).Value =  IdReceptor
-    
-    HojaDeTrabajo.Cells(104, 2).Value = FacturasObjetos[0].TotalImpuesto
-    HojaDeTrabajo.Cells(105, 2).Value = FacturasObjetos[0].TotalVentaNeta
-    HojaDeTrabajo.Cells(106, 2).Value = FacturasObjetos[0].TotalComprobante
-    HojaDeTrabajo.Cells(107, 2).Value  =FacturasObjetos[0].Fecha.split("T")[0] 
-    
-    #ProgramaExcel =  clienteW2.Dispatch('Excel.Application')
-    #LibroDeTrabajo = ProgramaExcel.Workbooks.Open(Filename = pUrlHojaDeExcel, ReadOnly = 0)
-    try:
+        HojaDeTrabajo.Cells(100, 2).Value = Factura.obtenerNombreEmisor()
+        IdEmisor = Factura.obtenerTipoIDEmisor() + "#" + Factura.obtenerIDEmisor()
+        HojaDeTrabajo.Cells(101, 2).Value = IdEmisor 
+        
+        HojaDeTrabajo.Cells(102, 2).Value = Factura.obtenerNombreReceptor()
+        IdReceptor = Factura.obtenerTipoIDReceptor() + "#" + Factura.obtenerIDReceptor()
+        HojaDeTrabajo.Cells(103, 2).Value =  IdReceptor
+        
+        HojaDeTrabajo.Cells(104, 2).Value = Factura.TotalImpuesto
+        HojaDeTrabajo.Cells(105, 2).Value = Factura.TotalVentaNeta
+        HojaDeTrabajo.Cells(106, 2).Value = Factura.TotalComprobante
+        HojaDeTrabajo.Cells(107, 2).Value  =Factura.Fecha.split("T")[0]
         ProgramaExcel.Application.Run("IntroducirFactura")
+        print("#Mensaje#FacturasPrograma->Excel#" + str(i) + "#"+ str(cantidadDeFacturas)) 
+        i+=1
+    try:
+        
+        
         LibroDeTrabajo.Save()
         LibroDeTrabajo.Close()
         ProgramaExcel.Quit()
-            
-        print("Se relleno el archivo: \n" + pUrlHojaDeExcel)
-        #ProgramaExcel.Application.Run(pUrlHojaDeExcel + "!ModMacros.GenerarPrueba")
+        
     except:
     
     #else:    
@@ -113,13 +116,6 @@ if os.path.exists(ArchivoDeExcelATrabajar):
             
             
         ProgramaExcel.Quit()
-
-    return True
-                
-    
-else:
-    return False
-"""
 
 
 
