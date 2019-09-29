@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuracionesArchivos>
-	<urlCarpetaDeEntrada>/home/elias/ArenaDePruebas/BotFacturaElectronica/input/</urlCarpetaDeEntrada>
+	<urlCarpetaDeEntrada>C:\Users\pc\Documents\Repositorios\Pruebas\BotFacturaElectronica/input/</urlCarpetaDeEntrada>
 	
-	<urlCarpetaDeSalida>/home/elias/ArenaDePruebas/BotFacturaElectronica/output/</urlCarpetaDeSalida>
+	<urlCarpetaDeSalida>C:\Users\pc\Documents\Repositorios\Pruebas\BotFacturaElectronica/output/</urlCarpetaDeSalida>
 </configuracionesArchivos>

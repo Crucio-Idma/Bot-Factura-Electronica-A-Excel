@@ -1,2 +1,6 @@
 
 .directory
+
+CajaDeHerramientas/__pycache__/bibliotecarioDeArchivos.cpython-37.pyc
+
+*.pyc
