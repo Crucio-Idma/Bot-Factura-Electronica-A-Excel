@@ -33,6 +33,8 @@ except Exception as error:
 _UrlInputDeArchivos =  _ArchivoConfig.getElementsByTagName("urlCarpetaDeEntrada")[0].firstChild.data
 #directorios, subdirectorios, archivos
 FacturasURLS = bibliotecarioDeArchivos.buscarFacturasEnLasCarpetas(_UrlInputDeArchivos)
+i = 0
+largo = str(len(FacturasURLS))
 
 for urlFactura in FacturasURLS:
     
@@ -41,8 +43,9 @@ for urlFactura in FacturasURLS:
     if temporalObjetoFactura != None:
         
         FacturasObjetos.append(temporalObjetoFactura)
-    
-
+        
+    print("#FacturasAMemoria#" + str(i) +"de " + largo)
+    i+=1
     
 print("MMM")
 print("MMM")
