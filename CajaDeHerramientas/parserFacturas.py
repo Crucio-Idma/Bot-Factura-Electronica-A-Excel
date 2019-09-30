@@ -73,7 +73,7 @@ def cargarFacturaDesdeArchivo(pUrlDelaFactura):
         
         try:
             
-            pTotalExoneradoP = ResumenFacturaXML.getElementsByTagName("TotalGravado")[0].firstChild.data 
+            pTotalExoneradoP = ResumenFacturaXML.getElementsByTagName("TotalExonerado")[0].firstChild.data 
             
         except:
             

@@ -24,6 +24,9 @@ class Factura:
         self.TotalExonerado = pTotalExonerado
         
         self.TotalDescuento = pTotalDescuento
+        
+        self.detallesDeLosServicios = []
+    
     
     def obtenerNombreEmisor(self):       
         
