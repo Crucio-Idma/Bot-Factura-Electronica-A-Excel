@@ -99,15 +99,43 @@ def cargarFacturaDesdeArchivo(pUrlDelaFactura):
         for servicio in LineasDeServicios:
             
             
+            piUnidadMedida = cargarParametroDeLinea(servicio, "UnidadMedida")
+            piCantidad = cargarParametroDeLinea(servicio, "Cantidad")
+            piDetalle = cargarParametroDeLinea(servicio, "Detalle")
+            piPrecioUnitario = cargarParametroDeLinea(servicio, "PrecioUnitario")
+            piMontoTotal = cargarParametroDeLinea(servicio, "MontoTotal")
             
+            Descuento = servicio.getElementsByTagName("Descuento")
             
+            if(len(Descuento) > 0):
+                
+                piNaturalezaDescuento = cargarParametroDeLinea(Descuento[0], "NaturalezaDescuento")
+                piMontoDescuento = cargarParametroDeLinea(Descuento[0], "MontoDescuento")
+                
+            else:
+                
+                piNaturalezaDescuento = "No tiene descuento"
+                piMontoDescuento = "No tiene descuento"
+                
             
+            piSubTotal = cargarParametroDeLinea(servicio, "SubTotal")
             
+            Impuesto = servicio.getElementsByTagName("Impuesto")
             
+            if(len(Impuesto) > 0):
+                
+                piTarifaImpuesto = cargarParametroDeLinea(Impuesto[0], "Tarifa")
+                piMontoImpuesto =  cargarParametroDeLinea(Impuesto[0], "Monto")
+                
+            else:
+                
+                piTarifaImpuesto = "No especifica tarifa"
+                piMontoImpuesto = "No especifica monto"
+
+            piImpuestoNeto = cargarParametroDeLinea(servicio, "ImpuestoNeto")
+            piMontoTotalLinea = cargarParametroDeLinea(servicio, "MontoTotalLinea")
             
-            
-            
-            resultadoFactura.introducirLineaDeServicio(piUnidadMedida = 0, piCantidad = 0, piDetalle = 0, piPrecioUnitario = 0, piMontoTotal = 0 , piNaturalezaDescuento = 0, piMontoDescuento = 0, piSubTotal = 0 , piTarifaImpuesto = 0, piMontoImpuesto = 0, piImpuestoNeto = 0, piMontoTotalLinea = 0)
+            resultadoFactura.introducirLineaDeServicio(piUnidadMedida, piCantidad, piDetalle, piPrecioUnitario, piMontoTotal, piNaturalezaDescuento, piMontoDescuento, piSubTotal , piTarifaImpuesto, piMontoImpuesto, piImpuestoNeto, piMontoTotalLinea)
          
         
         
@@ -122,6 +150,16 @@ def cargarFacturaDesdeArchivo(pUrlDelaFactura):
         print("#Error# Datos incompletos en la factura" )
         return None
     
+def cargarParametroDeLinea(pServicio, pParametro):
+        
+    try:
+            
+        Resultado = pServicio.getElementsByTagName(pParametro)[0].firstChild.data
+                
+    except:
+            
+        Resultado = "No especificado"
     
-    
+        
+    return Resultado
     

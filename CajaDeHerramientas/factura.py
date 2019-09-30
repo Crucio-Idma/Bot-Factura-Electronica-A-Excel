@@ -55,6 +55,6 @@ class Factura:
     
     def introducirLineaDeServicio(self, piUnidadMedida = 0, piCantidad = 0, piDetalle = 0, piPrecioUnitario = 0, piMontoTotal = 0 , piNaturalezaDescuento = 0, piMontoDescuento = 0, piSubTotal = 0 , piTarifaImpuesto = 0, piMontoImpuesto = 0, piImpuestoNeto = 0, piMontoTotalLinea = 0):
         
-        detallesDeLosServicios += lineaDeServicio.LLineaDeServicio(pUnidadMedida = piUnidadMedida, pCantidad = piCantidad, pDetalle = piDetalle, pPrecioUnitario = piPrecioUnitario,  pMontoTotal = piMontoTotal , pNaturalezaDescuento = piNaturalezaDescuento, pMontoDescuento = piMontoDescuento, pSubTotal  = piSubTotal, pTarifaImpuesto = piTarifaImpuesto, pMontoImpuesto = piMontoImpuesto, pImpuestoNeto =  piImpuestoNeto,  pMontoTotalLinea =  piMontoTotalLinea)
+        self.detallesDeLosServicios.append( lineaDeServicio.LineaDeServicio(pUnidadMedida = piUnidadMedida, pCantidad = piCantidad, pDetalle = piDetalle, pPrecioUnitario = piPrecioUnitario,  pMontoTotal = piMontoTotal , pNaturalezaDescuento = piNaturalezaDescuento, pMontoDescuento = piMontoDescuento, pSubTotal  = piSubTotal, pTarifaImpuesto = piTarifaImpuesto, pMontoImpuesto = piMontoImpuesto, pImpuestoNeto =  piImpuestoNeto,  pMontoTotalLinea =  piMontoTotalLinea) )
         
         
