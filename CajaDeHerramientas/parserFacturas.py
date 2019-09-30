@@ -18,7 +18,13 @@ def cargarFacturaDesdeArchivo(pUrlDelaFactura):
     #try:
     
         _FacturaXML = minidom.parse(pUrlDelaFactura)
-        FacturaSinFirmas = _FacturaXML.getElementsByTagName("FacturaElectronica")[0] 
+        
+        
+        FacturaSinFirmas = _FacturaXML.getElementsByTagName("FacturaElectronica")[0]
+        
+        NumeroConsecutivo = FacturaSinFirmas.getElementsByTagName("NumeroConsecutivo")[0].firstChild.data
+        
+         
         Emisor = FacturaSinFirmas.getElementsByTagName("Emisor")[0]
         pNombreEmisor = Emisor.getElementsByTagName("Nombre")[0].firstChild.data
         
@@ -82,7 +88,7 @@ def cargarFacturaDesdeArchivo(pUrlDelaFactura):
             pTotalDescuentoP = 0
         
         
-        resultadoFactura = factura.Factura(pNombreEmisor ,pTipoIdentificacionEmisor ,pNumeroDeIdentificacionEmisor, pNombreReceptor,pTipoIdentificacionReceptor, pNumeroDeIdentificacionReceptor , pTotalImpuesto, pTotalVentaNeta, pTotalComprobante, pFecha, pTotalExento = pTotalExcentoP, pTotalGravado = pTotalGravadoP, pTotalExonerado = pTotalExoneradoP, pTotalDescuento = pTotalDescuentoP)
+        resultadoFactura = factura.Factura(NumeroConsecutivo, pNombreEmisor ,pTipoIdentificacionEmisor ,pNumeroDeIdentificacionEmisor, pNombreReceptor,pTipoIdentificacionReceptor, pNumeroDeIdentificacionReceptor , pTotalImpuesto, pTotalVentaNeta, pTotalComprobante, pFecha, pTotalExento = pTotalExcentoP, pTotalGravado = pTotalGravadoP, pTotalExonerado = pTotalExoneradoP, pTotalDescuento = pTotalDescuentoP)
         
         return resultadoFactura
         

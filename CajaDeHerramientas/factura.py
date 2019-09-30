@@ -8,8 +8,9 @@ from CajaDeHerramientas.PartesDeLaFactura import persona
 
 class Factura:
     
-    def __init__(self , pemisor ,ptipoIDEmisor ,pidEmisor, preceptor,pTidoIdReceptor, pidreceptor , pTotalImpuesto, pTotalVentaNeta, pTotalComprobante, pfecha, pTotalGravado = 0 , pTotalExento = 0, pTotalExonerado = 0, pTotalDescuento = 0):
+    def __init__(self, pNumeroConsecutivo , pemisor ,ptipoIDEmisor ,pidEmisor, preceptor,pTidoIdReceptor, pidreceptor , pTotalImpuesto, pTotalVentaNeta, pTotalComprobante, pfecha, pTotalGravado = 0 , pTotalExento = 0, pTotalExonerado = 0, pTotalDescuento = 0):
         
+        self.NumeroConsecutivo = pNumeroConsecutivo
         self.receptor = preceptor
         self.TotalImpuesto = pTotalImpuesto
         self.TotalVentaNeta= pTotalVentaNeta
