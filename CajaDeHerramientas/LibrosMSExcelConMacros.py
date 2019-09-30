@@ -1,4 +1,11 @@
+'''
+Created on 28 sep. 2019
 
+@author: Crucio
+
+
+
+'''
 
 
 import win32com.client as clienteW2

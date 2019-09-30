@@ -52,5 +52,3 @@ class Factura:
         
         return self.receptor.Identificacion
     
-    
-    
