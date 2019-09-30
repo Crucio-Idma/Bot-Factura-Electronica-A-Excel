@@ -90,9 +90,33 @@ def cargarFacturaDesdeArchivo(pUrlDelaFactura):
         
         resultadoFactura = factura.Factura(NumeroConsecutivo, pNombreEmisor ,pTipoIdentificacionEmisor ,pNumeroDeIdentificacionEmisor, pNombreReceptor,pTipoIdentificacionReceptor, pNumeroDeIdentificacionReceptor , pTotalImpuesto, pTotalVentaNeta, pTotalComprobante, pFecha, pTotalExento = pTotalExcentoP, pTotalGravado = pTotalGravadoP, pTotalExonerado = pTotalExoneradoP, pTotalDescuento = pTotalDescuentoP)
         
+        
+        
+        
+        LineasDeServicios = FacturaSinFirmas.getElementsByTagName("DetalleServicio")[0].getElementsByTagName("LineaDetalle")
+        
+        
+        for servicio in LineasDeServicios:
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            resultadoFactura.introducirLineaDeServicio(piUnidadMedida = 0, piCantidad = 0, piDetalle = 0, piPrecioUnitario = 0, piMontoTotal = 0 , piNaturalezaDescuento = 0, piMontoDescuento = 0, piSubTotal = 0 , piTarifaImpuesto = 0, piMontoImpuesto = 0, piImpuestoNeto = 0, piMontoTotalLinea = 0)
+         
+        
+        
         return resultadoFactura
         
     else:    
+        
+        
+        
     #except:
         
         print("#Error# Datos incompletos en la factura" )

@@ -9,10 +9,11 @@ Created on 28 sep. 2019
 
 class LineaDeServicio:
     
-    def __init__(self):
+    def __init__(self, pUnidadMedida = 0, pCantidad = 0, pDetalle = 0, pPrecioUnitario = 0, pMontoTotal = 0 , pNaturalezaDescuento = 0, pMontoDescuento = 0, pSubTotal = 0 , pTarifaImpuesto = 0, pMontoImpuesto = 0, pImpuestoNeto = 0, pMontoTotalLinea = 0):
         
-        self.Cantidad = pCantidad
         self.UnidadMedida = pUnidadMedida
+        self.Cantidad = pCantidad
+
         self.Detalle = pDetalle
         self.PrecioUnitario = pPrecioUnitario
         self.MontoTotal = pMontoTotal
