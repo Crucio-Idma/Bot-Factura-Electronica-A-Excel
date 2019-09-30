@@ -10,6 +10,7 @@ Created on 28 sep. 2019
 
 import win32com.client as clienteW2
 import os
+from  CajaDeHerramientas.PartesDeLaFactura import lineaDeServicio
 
 def cargarFacturasEnLibroDeExcel(pUrlDelLibroDeExcel, pListaConLasFacturas):
     
@@ -50,6 +51,27 @@ def cargarFacturasEnLibroDeExcel(pUrlDelLibroDeExcel, pListaConLasFacturas):
             
             
             ProgramaExcel.Application.Run("IntroducirFactura")
+            
+            for producto in Factura.detallesDeLosServicios:
+                
+                HojaDeTrabajo.Cells(100, 5).Value = producto.UnidadMedida
+                HojaDeTrabajo.Cells(101, 5).Value = producto.Detalle
+                HojaDeTrabajo.Cells(102, 5).Value = producto.Cantidad
+                HojaDeTrabajo.Cells(103, 5).Value = producto.PrecioUnitario
+                HojaDeTrabajo.Cells(104, 5).Value = producto.MontoTotal
+                HojaDeTrabajo.Cells(105, 5).Value = producto.NaturalezaDescuento
+                HojaDeTrabajo.Cells(106, 5).Value = producto.MontoDescuento
+                HojaDeTrabajo.Cells(107, 5).Value = producto.SubTotal
+                HojaDeTrabajo.Cells(108, 5).Value = producto.TarifaImpuesto
+                HojaDeTrabajo.Cells(109, 5).Value = producto.MontoImpuesto
+                HojaDeTrabajo.Cells(110, 5).Value = producto.ImpuestoNeto
+                HojaDeTrabajo.Cells(111, 5).Value = producto.MontoTotalLinea
+                
+                
+                
+                print("hola hola hola hola")
+            
+            
             print("#Mensaje#FacturasPrograma->Excel#" + str(i) + "#"+ str(cantidadDeFacturas)) 
             i+=1
         
