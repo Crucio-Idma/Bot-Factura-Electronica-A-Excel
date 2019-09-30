@@ -10,7 +10,8 @@ from  xml.dom import minidom
 from os import scandir, getcwd, listdir, walk
 
 import os
-from CajaDeHerramientas import bibliotecarioDeArchivos, factura, parserFacturas, ArchivadorDisco
+from CajaDeHerramientas import bibliotecarioDeArchivos, factura, parserFacturas, ArchivadorDisco, LibrosMSExcelConMacros
+
 
 #==================Temporal=======================================================================================
 import win32com.client as clienteW2
@@ -45,12 +46,6 @@ ArchivadorDisco.crearArchivoEnBaseAUnaPlantilla(_UrlInputDePlantillaExcel, _UrlO
 
 #====================================================================================================================================================================================
 
-
-
-
-
-
-
 i = 0
 largo = str(len(FacturasURLS))
 
@@ -75,48 +70,7 @@ for urlFactura in FacturasURLS:
 ArchivoDeExcelATrabajar = bibliotecarioDeArchivos.EncontrarArchivoDeExcelConMacros(_UrlOutputDeArchivos + "/LibrosDeExcel")
 ArchivoDeExcelATrabajar = ArchivoDeExcelATrabajar.replace("/", "\\")
 
-i = 0
-cantidadDeFacturas = len(FacturasObjetos)
-if os.path.exists(ArchivoDeExcelATrabajar):
-    
-    ProgramaExcel = clienteW2.Dispatch("Excel.Application")
-    ProgramaExcel.Visible = 1
-    LibroDeTrabajo = ProgramaExcel.Workbooks.Open(Filename=ArchivoDeExcelATrabajar, ReadOnly = 0)
-    LibroDeTrabajoM = ProgramaExcel.ActiveWorkbook
-    HojaDeTrabajo = LibroDeTrabajoM.Sheets(1)
-    
-    for Factura in FacturasObjetos:
-    
-        HojaDeTrabajo.Cells(100, 2).Value = Factura.obtenerNombreEmisor()
-        IdEmisor = Factura.obtenerTipoIDEmisor() + "#" + Factura.obtenerIDEmisor()
-        HojaDeTrabajo.Cells(101, 2).Value = IdEmisor 
-        
-        HojaDeTrabajo.Cells(102, 2).Value = Factura.obtenerNombreReceptor()
-        IdReceptor = Factura.obtenerTipoIDReceptor() + "#" + Factura.obtenerIDReceptor()
-        HojaDeTrabajo.Cells(103, 2).Value =  IdReceptor
-        
-        HojaDeTrabajo.Cells(104, 2).Value = Factura.TotalImpuesto
-        HojaDeTrabajo.Cells(105, 2).Value = Factura.TotalVentaNeta
-        HojaDeTrabajo.Cells(106, 2).Value = Factura.TotalComprobante
-        HojaDeTrabajo.Cells(107, 2).Value  =Factura.Fecha.split("T")[0]
-        ProgramaExcel.Application.Run("IntroducirFactura")
-        print("#Mensaje#FacturasPrograma->Excel#" + str(i) + "#"+ str(cantidadDeFacturas)) 
-        i+=1
-    try:
-        
-        
-        LibroDeTrabajo.Save()
-        LibroDeTrabajo.Close()
-        ProgramaExcel.Quit()
-        
-    except:
-    
-    #else:    
-        print("Error  de macros llenando las hojas")
-            
-            
-        ProgramaExcel.Quit()
-
+LibrosMSExcelConMacros.cargarFacturasEnLibroDeExcel(ArchivoDeExcelATrabajar, FacturasObjetos)
 
 
 #================================================================================================================================================================================================================================================

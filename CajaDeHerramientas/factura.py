@@ -8,7 +8,7 @@ from CajaDeHerramientas.PartesDeLaFactura import persona
 
 class Factura:
     
-    def __init__(self , pemisor ,ptipoIDEmisor ,pidEmisor, preceptor,pTidoIdReceptor, pidreceptor , pTotalImpuesto, pTotalVentaNeta, pTotalComprobante, pfecha):
+    def __init__(self , pemisor ,ptipoIDEmisor ,pidEmisor, preceptor,pTidoIdReceptor, pidreceptor , pTotalImpuesto, pTotalVentaNeta, pTotalComprobante, pfecha, pTotalGravado = 0 , pTotalExento = 0, pTotalExonerado = 0, pTotalDescuento = 0):
         
         self.receptor = preceptor
         self.TotalImpuesto = pTotalImpuesto
@@ -18,7 +18,11 @@ class Factura:
     
         self.emisor = persona.Persona(pNombre =pemisor, pTipoIdentificacion = ptipoIDEmisor ,pIdentificacion = pidEmisor )
         self.receptor = persona.Persona(pNombre = preceptor, pTipoIdentificacion = pTidoIdReceptor ,pIdentificacion = pidreceptor )
+        self.TotalGravado = pTotalGravado
+        self.TotalExento = pTotalExento
+        self.TotalExonerado = pTotalExonerado
         
+        self.TotalDescuento = pTotalDescuento
     
     def obtenerNombreEmisor(self):       
         

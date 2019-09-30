@@ -48,7 +48,41 @@ def cargarFacturaDesdeArchivo(pUrlDelaFactura):
         pTotalVentaNeta = float( ResumenFacturaXML.getElementsByTagName("TotalVentaNeta")[0].firstChild.data)
         pTotalComprobante = float( ResumenFacturaXML.getElementsByTagName("TotalComprobante")[0].firstChild.data)
         
-        resultadoFactura = factura.Factura(pNombreEmisor ,pTipoIdentificacionEmisor ,pNumeroDeIdentificacionEmisor, pNombreReceptor,pTipoIdentificacionReceptor, pNumeroDeIdentificacionReceptor , pTotalImpuesto, pTotalVentaNeta, pTotalComprobante, pFecha)
+        
+        try:
+            
+            pTotalExcentoP = ResumenFacturaXML.getElementsByTagName("TotalExento")[0].firstChild.data
+        
+        except:
+            
+            pTotalExcentoP = 0
+        
+        try:
+            
+            pTotalGravadoP = ResumenFacturaXML.getElementsByTagName("TotalGravado")[0].firstChild.data
+        
+        except:
+            
+            pTotalGravadoP = 0
+        
+        try:
+            
+            pTotalExoneradoP = ResumenFacturaXML.getElementsByTagName("TotalGravado")[0].firstChild.data 
+            
+        except:
+            
+            pTotalExoneradoP = 0
+         
+        try:
+            
+            pTotalDescuentoP = ResumenFacturaXML.getElementsByTagName("TotalDescuentos")[0].firstChild.data 
+            
+        except:
+            
+            pTotalDescuentoP = 0
+        
+        
+        resultadoFactura = factura.Factura(pNombreEmisor ,pTipoIdentificacionEmisor ,pNumeroDeIdentificacionEmisor, pNombreReceptor,pTipoIdentificacionReceptor, pNumeroDeIdentificacionReceptor , pTotalImpuesto, pTotalVentaNeta, pTotalComprobante, pFecha, pTotalExento = pTotalExcentoP, pTotalGravado = pTotalGravadoP, pTotalExonerado = pTotalExoneradoP, pTotalDescuento = pTotalDescuentoP)
         
         return resultadoFactura
         
